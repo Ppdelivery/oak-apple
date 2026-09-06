@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oak apple</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #5a5a5a;
+    --rule: #e2e2e2;
+    --accent: #2f5d3f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --fg: #e8e8e8;
+      --muted: #a0a0a0;
+      --rule: #303336;
+      --accent: #8fc8a4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 .35rem; letter-spacing: -.01em; }
+  h2 {
+    font-size: 1.15rem; margin: 2.4rem 0 .6rem; letter-spacing: -.005em;
+    padding-top: 1.4rem; border-top: 1px solid var(--rule);
+  }
+  h2:first-of-type { border-top: 0; padding-top: 0; }
+  p, li { margin: 0 0 .9rem; }
+  ul { padding-left: 1.25rem; }
+  li { margin-bottom: .55rem; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9em; }
+  .sub { color: var(--muted); margin: 0 0 2.5rem; }
+  .lede { font-size: 1.08rem; }
+  strong { color: var(--accent); }
+  a { color: var(--accent); }
+  footer { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .92rem; }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Oak apple</h1>
+  <p class="sub">A home screen for Android. <code>app.homedeck.launcher</code></p>
+
+  <h2>What it is</h2>
+  <p class="lede">Oak apple replaces your phone's home screen. It can move apps you choose into an
+  Android work profile, and show a plain home screen that does not list them. What you keep to
+  yourself stays behind a code you set.</p>
+
+  <h2>What it does not do</h2>
+  <p><strong>There are no servers, no account and no analytics.</strong> Nothing you do in the app
+  is reported anywhere, and what it keeps, it keeps on your phone. It works with no connection at
+  all &mdash; nothing waits on the network, and no feature switches off when there is no signal.</p>
+  <p>The two exceptions are stated plainly, and only ever happen from behind your code: an
+  advertisement on the settings screens, which Google serves, and the one-time purchase that
+  removes them, which Google Play handles. The <a href="privacy.html">privacy policy</a> sets out
+  exactly what each one tells Google, and what it does not.</p>
+
+  <h2>Privacy</h2>
+  <p>The <a href="privacy.html">privacy policy</a> is the full account: what is collected, what is
+  stored, where it is stored, and why each permission is asked for.</p>
+
+  <h2>Contact</h2>
+  <p>Per Jimmy Edlund Nåvall, contact@oak-apple.com.</p>
+
+  <footer>
+    Oak apple for Android · <a href="privacy.html">Privacy policy</a>
+  </footer>
+
+</main>
+</body>
+</html>
