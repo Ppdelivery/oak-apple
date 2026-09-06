@@ -1,0 +1,100 @@
+# Publishes the public Oak apple site to GitHub Pages.
+#
+# Settings > Pages > Source must be "GitHub Actions", never "Deploy from a branch".
+# "Deploy from a branch" would serve the whole repository instead of ./site, so any file added
+# here for any reason would become public without anyone deciding that it should. This workflow
+# uploads exactly one directory.
+#
+# Two guards below. The first keeps ./site to a named allowlist, so publishing a new page is a
+# deliberate edit to this file rather than a side effect of adding one. The second enforces the
+# rule the site rests on: the pages load NO external resource -- no fonts, no scripts, no
+# analytics, no embedded widgets. An outbound <a href> is fine; anything that *loads* from
+# another host is not, because the privacy policy would stop being true on its own origin.
+
+name: Publish the site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Guard 1: fail loudly rather than publish something unintended.
+      - name: Refuse to publish anything but the known files
+        run: |
+          unexpected="$(find site -type f ! -name 'privacy.html' ! -name 'app-ads.txt' -print)"
+          if [ -n "$unexpected" ]; then
+            echo "::error::site/ contains files beyond the allowlist:"
+            echo "$unexpected"
+            echo "Publishing would make them public. Remove them, or update this guard on purpose."
+            exit 1
+          fi
+
+      # Guard 2: the pages must stay inert. An outbound <a href="https://..."> is fine; anything
+      # that *loads* from another host is not.
+      #
+      # grep -z treats each whole file as ONE record, and that is the point. Without it the match
+      # is line-based, and a tag broken across lines hides from it completely:
+      #
+      #     <script
+      #       src="https://evil.example/x.js"></script>
+      #
+      # Six of eight known-bad pages walked past the line-based version -- not just wrapped tags
+      # but every url() inside a <style> block, and srcset/poster, which name no "src=" at all.
+      #
+      # Note the "|| true": Actions runs this with -eo pipefail, and grep exits 1 when it finds
+      # nothing. Without it the guard would fail the build on a perfectly clean page.
+      - name: Refuse to publish a page that loads an external resource
+        run: |
+          tags='script|link|img|iframe|source|video|audio|embed|object|track|input|use|image'
+          attrs='src|srcset|href|poster|data|codebase|xlink:href'
+          fail=0
+          for f in site/*.html; do
+            hits="$(grep -zoEi "<($tags)[[:space:]][^>]*($attrs)[[:space:]]*=[[:space:]]*.?(https?:)?//" "$f" | tr '\0' '\n' | tr -s ' \n' ' ' || true)"
+            if [ -n "$hits" ]; then
+              echo "::error::$f loads a resource from another host:"
+              echo "  $hits"
+              fail=1
+            fi
+            css="$(grep -zoEi "(@import|url\([[:space:]]*['\"]?[[:space:]]*(https?:)?//)" "$f" | tr '\0' '\n' | tr -s ' \n' ' ' || true)"
+            if [ -n "$css" ]; then
+              echo "::error::$f pulls CSS or a CSS asset from another host:"
+              echo "  $css"
+              fail=1
+            fi
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo "The site promises it loads nothing external; that promise sits on the same origin"
+            echo "as the privacy policy. Inline the asset, or change the promise on purpose."
+            exit 1
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - name: Upload ./site only
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
