@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support Oak apple</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #5a5a5a;
+    --rule: #e2e2e2;
+    --accent: #2f5d3f;
+    --cta-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --fg: #e8e8e8;
+      --muted: #a0a0a0;
+      --rule: #303336;
+      --accent: #8fc8a4;
+      --cta-fg: #16181a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 .35rem; letter-spacing: -.01em; }
+  h2 {
+    font-size: 1.15rem; margin: 2.4rem 0 .6rem; letter-spacing: -.005em;
+    padding-top: 1.4rem; border-top: 1px solid var(--rule);
+  }
+  h2:first-of-type { border-top: 0; padding-top: 0; }
+  p, li { margin: 0 0 .9rem; }
+  ul { padding-left: 1.25rem; }
+  li { margin-bottom: .55rem; }
+  .sub { color: var(--muted); margin: 0 0 2.5rem; }
+  .lede { font-size: 1.08rem; }
+  strong { color: var(--accent); }
+  a { color: var(--accent); }
+  .cta {
+    display: inline-block; margin: .4rem 0 .3rem;
+    padding: .7rem 1.3rem; border-radius: .4rem;
+    background: var(--accent); color: var(--cta-fg);
+    text-decoration: none; font-weight: 600;
+  }
+  .cta:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
+  footer { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .92rem; }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Support Oak apple</h1>
+  <p class="sub"><strong>Oak apple</strong> for Android. This page is the only place it ever asks
+  you for anything.</p>
+
+  <h2>Why this exists</h2>
+  <p class="lede">Oak apple is free to use, and it collects nothing about you &mdash; no servers,
+  no account, no analytics. It carries one advertisement, on the settings screens behind your code,
+  and a one-time purchase that removes it; neither home screen ever shows one. That is the whole of
+  what earns behind it. If the app is useful to you and you want to chip in beyond that, this is
+  how.</p>
+
+  <h2>What a donation does</h2>
+  <p><strong>Nothing inside the app.</strong> Giving unlocks no features, lifts no limits, and is
+  not recorded anywhere the app can see. It is a thank-you, not a purchase, and it is not the
+  one-time unlock &mdash; that is bought through Google Play, inside the app, and is the only thing
+  that changes how Oak apple behaves. Give or not, the app is identical, and it has no way to find
+  out either way.</p>
+
+  <h2>How</h2>
+  <p>Donations are handled by Buy Me a Coffee, which takes cards as well as Google Pay and Apple
+  Pay. Nothing is recurring unless you choose it there.</p>
+  <p><a class="cta" href="https://buymeacoffee.com/oakapple" target="_blank" rel="noopener noreferrer">Buy me a coffee</a></p>
+
+  <h2>About that link</h2>
+  <p>It leaves this site, and that is the whole design. <strong>This page loads nothing from
+  anywhere</strong> — no fonts, no scripts, no analytics, no cookies, no donation widget — exactly
+  like the <a href="privacy.html">privacy policy</a>. A payment button embedded here would pull a
+  third party's code onto the same address as that policy, and the policy would stop being true.</p>
+  <p>Buy Me a Coffee is a separate company with its own privacy policy and its own cookies. What
+  happens after you follow the link is between you and them. The app is told nothing about it: it
+  never contacts Buy Me a Coffee, and has no way to learn who gave or whether anyone did. I see
+  only what a supporter chooses to put on Buy Me a Coffee, and nothing else reaches me.</p>
+
+  <footer>
+    Oak apple for Android · <a href="privacy.html">Privacy policy</a>
+  </footer>
+
+</main>
+</body>
+</html>

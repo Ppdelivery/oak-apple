@@ -42,7 +42,7 @@ jobs:
       # Guard 1: fail loudly rather than publish something unintended.
       - name: Refuse to publish anything but the known files
         run: |
-          unexpected="$(find site -type f ! -name 'index.html' ! -name 'privacy.html' ! -name 'app-ads.txt' -print)"
+          unexpected="$(find site -type f ! -name 'index.html' ! -name 'privacy.html' ! -name 'donate.html' ! -name 'app-ads.txt' -print)"
           if [ -n "$unexpected" ]; then
             echo "::error::site/ contains files beyond the allowlist:"
             echo "$unexpected"
