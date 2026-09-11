@@ -53,11 +53,34 @@
     text-decoration: none; font-weight: 600;
   }
   .cta:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
+  /* Provisional navigation: one row of links at the top of every page, so the pages that
+     exist can actually be reached. It is a stand-in for a proper header and is meant to be
+     thrown away when the site gets one. */
+  nav.tabs {
+    display: flex; flex-wrap: wrap; gap: .25rem .35rem;
+    margin: 0 0 2rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+    font-size: .92rem;
+  }
+  nav.tabs a {
+    text-decoration: none; color: var(--muted);
+    padding: .3rem .7rem; border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  nav.tabs a:hover { color: var(--accent); border-color: var(--rule); }
+  nav.tabs a[aria-current="page"] { color: var(--accent); border-color: var(--rule); font-weight: 600; }
   footer { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .92rem; }
 </style>
 </head>
 <body>
 <main>
+
+  <nav class="tabs">
+    <a href="index.html">Oak apple</a>
+    <a href="layout.html">Home screen layouts</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="donate.html" aria-current="page">Support</a>
+  </nav>
 
   <h1>Support Oak apple</h1>
   <p class="sub"><strong>Oak apple</strong> for Android. This page is the only place it ever asks
