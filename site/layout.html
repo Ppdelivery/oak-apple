@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arrange your home screen — Oak apple</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #5a5a5a;
+    --rule: #e2e2e2;
+    --accent: #2f5d3f;
+    --card: #f6f7f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --fg: #e8e8e8;
+      --muted: #a0a0a0;
+      --rule: #303336;
+      --accent: #8fc8a4;
+      --card: #1d2022;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 .35rem; letter-spacing: -.01em; }
+  h2 {
+    font-size: 1.15rem; margin: 2.4rem 0 .6rem; letter-spacing: -.005em;
+    padding-top: 1.4rem; border-top: 1px solid var(--rule);
+  }
+  h2:first-of-type { border-top: 0; padding-top: 0; }
+  h3 { font-size: 1rem; margin: 1.8rem 0 .5rem; }
+  p, li { margin: 0 0 .9rem; }
+  ul, ol { padding-left: 1.25rem; }
+  li { margin-bottom: .55rem; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9em; }
+  .sub { color: var(--muted); margin: 0 0 2.5rem; }
+  .lede { font-size: 1.08rem; }
+  strong { color: var(--accent); }
+  a { color: var(--accent); }
+  footer { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .92rem; }
+
+  .promptbox {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    margin: 1rem 0 1.2rem;
+    overflow: hidden;
+  }
+  .promptbar {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: .55rem .75rem .55rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--muted); font-size: .85rem;
+  }
+  .promptbar button {
+    font: inherit; font-size: .85rem; cursor: pointer;
+    background: transparent; color: var(--accent);
+    border: 1px solid var(--rule); border-radius: 6px; padding: .25rem .7rem;
+  }
+  .promptbar button:hover { border-color: var(--accent); }
+  pre {
+    margin: 0; padding: 1rem;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .85rem; line-height: 1.6;
+    white-space: pre-wrap; word-wrap: break-word;
+  }
+  .note {
+    border-left: 3px solid var(--rule); padding-left: 1rem; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Arrange your home screen</h1>
+  <p class="sub">Describe the phone you want. Get it.</p>
+
+  <h2>What this is</h2>
+  <p class="lede">Oak apple can write down what your phone has and where everything sits, as an
+  ordinary text file. You hand that file to an AI assistant along with a sentence about how you
+  want your phone arranged, and it hands back a rearranged version. You open that on your phone,
+  look at what it is about to do, and say yes.</p>
+
+  <p>That is the whole of it. Arranging a phone by hand takes twenty minutes of dragging; this
+  takes a sentence and a couple of corrections afterwards.</p>
+
+  <p><strong>The app never talks to the assistant, and the assistant never touches your phone.</strong>
+  Two files cross a gap that neither side can see across. Oak apple has no account, no server and
+  no idea that any AI exists — it opens a file you chose, and the only thing a file is ever allowed
+  to do is move icons. It cannot install, remove, hide or open an app, and it changes no setting
+  beyond the order things sit in.</p>
+
+  <p class="note">The file lists only the apps anyone can already see on your phone. Apps you have
+  hidden are never written to it and can never be placed by it, because a text file sitting in your
+  Downloads that lists what you hid is exactly the thing this app exists to not create.</p>
+
+  <h2>The three steps</h2>
+  <ol>
+    <li><strong>Export.</strong> In Oak apple: <em>Settings → Customisation → Layout → Export app
+    list</em>. Save it wherever you like — Downloads, Drive, OneDrive, Dropbox. It is called
+    <code>homescreen.md</code> and it is plain text you can read yourself.</li>
+    <li><strong>Ask.</strong> Open your assistant on a computer, attach that file, and paste the
+    prompt below with your own description in it.</li>
+    <li><strong>Import.</strong> Save the answer as a <code>.md</code> file, put it somewhere your
+    phone can reach, then: <em>Settings → Customisation → Layout → Import layout</em>. Pick the
+    file. <strong>Nothing is changed until you have seen what it will do</strong> — the screen
+    before it lists how many apps move, which folders appear, and every name it did not recognise,
+    quoted exactly as written. One row undoes the whole thing afterwards.</li>
+  </ol>
+
+  <h2>The prompt</h2>
+  <p>Copy this, attach your exported <code>homescreen.md</code>, and replace the last line with
+  what you actually want.</p>
+
+  <div class="promptbox">
+    <div class="promptbar">
+      <span>Paste into your assistant, with the file attached</span>
+      <button type="button" id="copy" data-idle="Copy" data-done="Copied">Copy</button>
+    </div>
+<pre id="prompt">I want you to rearrange my Android home screen.
+
+Attached is a file my launcher exported. Read it first. It lists every app on my
+phone — the name I see under the icon, and the package name underneath that — and
+it describes exactly how my home screen and app drawer are arranged right now. It
+also explains the file format in full. Follow that format, not your own idea of it.
+
+Give me back ONLY the layout, as one block I can save as a .md file. You do not
+need to repeat the explanation or the app list. Start it like this:
+
+    # Home screen layout
+    version: 1
+    sort: custom
+
+and then the sections you have changed:
+
+- "## Dock" — at most four apps, in order. The dock packs itself and centres what
+  is in it, so never leave a blank there.
+- "## Home 1" through "## Home 4" — one bullet per cell, twenty cells to a page,
+  filling left to right and then down. A bullet that is just "." is a cell left
+  deliberately empty.
+- "### Folder Name" under a page puts a folder in the next free cell. Its bullets
+  are what is inside it. Add "@7" to pin something to cell 7 — cell 0 is top left.
+  Add "#RRGGBB" after a folder's name to colour its tile.
+- "## Drawer" — one continuous list, twenty to a page. A folder in the drawer takes
+  its apps out of the loose list; a folder on a home page does not, because the
+  drawer is the complete list of everything on the phone.
+
+A surface you do not write about is left exactly as it is. So if I only ask you to
+fix my dock, only give me "## Dock".
+
+Three rules I care about:
+
+1. ONLY use names that appear in the app list in the attached file, spelled the way
+   that file spells them. If I ask for something that is not on my phone, tell me
+   so — do not invent a name. A name my launcher does not recognise places nothing
+   and comes back to me as an error.
+2. Leave holes. A page with every single cell filled looks like a machine did it.
+   Real home screens have gaps in them, and so should this one.
+3. Four to seven apps in a folder, not fifteen. Never a folder called "Other" or
+   "More" — that is a folder nobody ever opens again.
+
+Before you write the layout, tell me in two or three lines what you are planning to
+do, so I can correct you first.
+
+Here is what I want:
+
+</pre>
+  </div>
+
+  <p>Anything you can describe, it can attempt: <em>"work apps in one folder, everything social in
+  another, and put the camera in the dock"</em>, or <em>"first page is only what I open every day,
+  the rest can live in the drawer"</em>, or <em>"sort my drawer into folders by what things are
+  for"</em>.</p>
+
+  <h3>If you want to copy the phone you had before</h3>
+  <p>Add this to the same prompt, and attach the screenshots too:</p>
+  <p>“I have also attached screenshots of my old phone's home screen. Reproduce it as closely as
+  you can: one screenshot per page in order, and one for each folder I opened.”</p>
+  <p>Shoot one picture per home page in the order they come, and one of each folder with the folder
+  <em>open</em> — a closed folder tile shows four tiny icons and a name, and four icons is not the
+  folder. Two apps with near-identical icons, or a folder named with a single emoji, will land in
+  the "not recognised" list rather than in the wrong place. That is deliberate: putting the wrong
+  app somewhere is worse than leaving a cell empty, because you will not notice and you will live
+  with it.</p>
+
+  <h2>What an import will change</h2>
+  <p>Two things worth knowing before you run one, so that neither is a surprise.</p>
+  <p><strong>The clock keeps its place.</strong> It sits in a band above the grid and cannot be
+  moved into it, so the very top row of a page copied from another phone has nowhere to land.</p>
+  <p><strong>A page with one row too many puts that top row into a folder called "Freja"</strong>,
+  top right — and only when the page would otherwise not fit. Most phones ship a home screen one
+  row taller than this one, so this is the ordinary case rather than an edge case. Freja is an
+  ordinary folder: rename it, empty it, drag things out of it. Nothing is ever thrown away for not
+  fitting.</p>
+
+  <h2>Putting it back</h2>
+  <p><strong>Undo import</strong> appears in <em>Customisation → Layout</em> after any import and
+  puts your old arrangement back exactly as it was — every icon, every gap, every folder.</p>
+  <p><strong>Restore default layout</strong>, in the same place, puts every icon back where a fresh
+  install puts it. If you would rather do that from a file, a file whose whole content is this one
+  line does the same thing:</p>
+  <div class="promptbox">
+    <div class="promptbar">
+      <span>The entire file</span>
+      <button type="button" id="copy2" data-idle="Copy" data-done="Copied">Copy</button>
+    </div>
+<pre id="prompt2">Restore default layout</pre>
+  </div>
+  <p>It only counts in a file that says nothing else. A layout file that happens to mention the
+  phrase somewhere in its text is still a layout, and is applied as one.</p>
+
+  <h2>What it will never do</h2>
+  <ul>
+    <li>Touch an app you have hidden, or write one into the file.</li>
+    <li>Install, remove, freeze or open anything.</li>
+    <li>Change a code, the distress setting, or any setting outside the order of your icons.</li>
+    <li>Talk to an AI by itself, or send anything anywhere. It opens a file. That is all it does.</li>
+  </ul>
+  <p>A file that arrived from outside your phone gets to move icons, and nothing else. Anything in
+  it that reads like an instruction is read as prose and ignored, because the app has no notion of
+  an instruction to begin with — it reads names and positions, and nothing else is there to find.</p>
+
+  <h2>When something does not land</h2>
+  <p><strong>"Not recognised"</strong> — the name did not match an app on your phone, or it matched
+  more than one. Nothing was placed for it. The screen quotes the name exactly as your file spelled
+  it, so you can find that line, correct it, and import again. Using the package name from the app
+  list is the way to be certain.</p>
+  <p><strong>"Named more than once"</strong> — an app sits in one place on the home screen, so the
+  first mention won and the rest were left out. Usually it means an app was put both loose on a page
+  and inside a folder.</p>
+  <p><strong>"Did not fit"</strong> — there was no free cell left on the pages your file described.
+  Those apps are still in the app drawer, where every app is.</p>
+  <p><strong>The drawer layout does not appear</strong> — the app drawer is showing A to Z, which
+  ignores any arrangement. Put it back to your own order in <em>Customisation → App drawer</em>, or
+  put <code>sort: custom</code> in the file.</p>
+
+  <h2>Contact</h2>
+  <p>Per Jimmy Edlund Nåvall, contact@oak-apple.com.</p>
+
+  <footer>
+    Oak apple for Android · <a href="index.html">Home</a> · <a href="privacy.html">Privacy policy</a> · <a href="donate.html">Support</a>
+  </footer>
+
+</main>
+<script>
+  for (const id of ["copy", "copy2"]) {
+    const button = document.getElementById(id);
+    if (!button) continue;
+    const source = document.getElementById(id === "copy" ? "prompt" : "prompt2");
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(source.innerText);
+        button.textContent = button.dataset.done;
+        setTimeout(() => { button.textContent = button.dataset.idle; }, 1600);
+      } catch (e) {
+        // Clipboard refused — the text is on the page and can still be selected by hand.
+        const range = document.createRange();
+        range.selectNodeContents(source);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+    });
+  }
+</script>
+</body>
+</html>
