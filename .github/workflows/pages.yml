@@ -39,10 +39,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Guard 1: fail loudly rather than publish something unintended.
+      # Guard 1: fail loudly rather than publish something unintended. Paths are matched whole,
+      # so a file with an allowed name in the wrong directory is still refused.
       - name: Refuse to publish anything but the known files
         run: |
-          unexpected="$(find site -type f ! -name 'index.html' ! -name 'layout.html' ! -name 'privacy.html' ! -name 'donate.html' ! -name 'app-ads.txt' -print)"
+          unexpected="$(find site -type f \
+            ! -path 'site/index.html' ! -path 'site/layout.html' ! -path 'site/privacy.html' \
+            ! -path 'site/donate.html' ! -path 'site/recovery.html' ! -path 'site/app-ads.txt' \
+            ! -path 'site/img/icon.svg' ! -path 'site/img/home.jpg' ! -path 'site/img/code-pad.jpg' \
+            ! -path 'site/img/unlocked.jpg' ! -path 'site/img/choose-apps.jpg' ! -path 'site/img/customise.jpg' \
+            -print)"
           if [ -n "$unexpected" ]; then
             echo "::error::site/ contains files beyond the allowlist:"
             echo "$unexpected"
