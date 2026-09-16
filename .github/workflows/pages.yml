@@ -47,7 +47,7 @@ jobs:
             ! -path 'site/index.html' ! -path 'site/layout.html' ! -path 'site/privacy.html' \
             ! -path 'site/donate.html' ! -path 'site/recovery.html' ! -path 'site/app-ads.txt' \
             ! -path 'site/img/icon.svg' ! -path 'site/img/home.jpg' ! -path 'site/img/code-pad.jpg' \
-            ! -path 'site/img/unlocked.jpg' ! -path 'site/img/choose-apps.jpg' ! -path 'site/img/customise.jpg' \
+            ! -path 'site/img/unlocked.jpg' ! -path 'site/img/choose-apps.jpg' \
             -print)"
           if [ -n "$unexpected" ]; then
             echo "::error::site/ contains files beyond the allowlist:"

@@ -74,14 +74,15 @@
   .step p { color: var(--muted); font-size: .96rem; margin: 0 0 1.5rem; }
   .step .shot { margin-top: auto; height: 17rem; overflow: hidden; border-radius: 1.2rem 1.2rem 0 0; }
 
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .shot-card { background: linear-gradient(160deg, #dfe8dc, #cfdccd); border-radius: 2rem; padding: 3rem 0 0; display: flex; justify-content: center; overflow: hidden; height: 30rem; }
-  .shot-card img { width: 16rem; border-radius: 1.8rem 1.8rem 0 0; box-shadow: 0 20px 40px -18px rgba(31,42,34,.5); }
   ul.checks { list-style: none; padding: 0; margin: 1.5rem 0 0; }
   ul.checks li { padding-left: 1.9rem; position: relative; margin: 0 0 .7rem; }
   ul.checks li::before { content: ""; position: absolute; left: 0; top: .42rem; width: 1.05rem; height: 1.05rem; border-radius: 50%; background: var(--leaf) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center/80% no-repeat; }
 
-  .offline { max-width: 44rem; }
+  .narrow { max-width: 44rem; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  /* The oak leaves from the app's own wallpaper, drawn inline so nothing is fetched. */
+  .leaf-card { border-radius: 2rem; overflow: hidden; height: 30rem; background: #17321f; }
+  .leaf-card svg { display: block; width: 100%; height: 100%; }
 
   .ai { background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
   .gap-diagram { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: .95rem; }
@@ -108,12 +109,12 @@
     .site-header .wrap { flex-direction: column; align-items: flex-start; gap: .2rem; padding-top: .7rem; padding-bottom: .55rem; }
     .site-nav { flex-wrap: wrap; gap: .1rem 1.1rem; font-size: .9rem; }
     .hero, .split { grid-template-columns: 1fr; gap: 2.5rem; }
+    .leaf-card { height: 16rem; }
     .hero { padding-top: 2.5rem; padding-bottom: 4rem; }
     .phones { height: 27rem; max-width: 22rem; margin: 0 auto; width: 100%; }
     .phone { width: 12rem; }
     .promise .wrap, .steps { grid-template-columns: 1fr; }
     section.block { padding: 4rem 0; }
-    .shot-card { height: 24rem; }
   }
 </style>
 </head>
@@ -198,12 +199,12 @@
           <li>Notification badges on icons</li>
         </ul>
       </div>
-      <div class="shot-card"><img src="img/customise.jpg" width="540" height="1170" alt="Oak apple customisation settings"></div>
+      <div class="leaf-card" aria-hidden="true"><svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="presentation"><defs><linearGradient id="leaf-bg" x1="0.1" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#23472e"/><stop offset="0.5" stop-color="#17321f"/><stop offset="1" stop-color="#0e2116"/></linearGradient><radialGradient id="leaf-glow" cx="0.3" cy="0.2" r="0.9"><stop offset="0" stop-color="#478059" stop-opacity="0.45"/><stop offset="1" stop-color="#478059" stop-opacity="0"/></radialGradient><g id="oak-leaf"><path d="M0.050,-0.000 C0.097,-0.015 0.196,-0.061 0.231,-0.091 C0.267,-0.121 0.241,-0.152 0.262,-0.182 C0.283,-0.212 0.344,-0.242 0.357,-0.273 C0.370,-0.303 0.330,-0.333 0.342,-0.364 C0.354,-0.394 0.422,-0.424 0.430,-0.455 C0.438,-0.485 0.383,-0.515 0.388,-0.545 C0.394,-0.576 0.460,-0.606 0.461,-0.636 C0.463,-0.667 0.397,-0.697 0.398,-0.727 C0.398,-0.758 0.466,-0.788 0.465,-0.818 C0.465,-0.848 0.396,-0.879 0.393,-0.909 C0.390,-0.939 0.454,-0.970 0.449,-1.000 C0.444,-1.030 0.367,-1.061 0.364,-1.091 C0.361,-1.121 0.433,-1.152 0.430,-1.182 C0.427,-1.212 0.353,-1.242 0.344,-1.273 C0.336,-1.303 0.386,-1.333 0.377,-1.364 C0.368,-1.394 0.303,-1.424 0.291,-1.455 C0.279,-1.485 0.314,-1.515 0.303,-1.545 C0.291,-1.576 0.237,-1.606 0.223,-1.636 C0.210,-1.667 0.236,-1.697 0.222,-1.727 C0.209,-1.758 0.162,-1.788 0.145,-1.818 C0.127,-1.848 0.137,-1.879 0.116,-1.909 C0.095,-1.939 0.059,-2.000 0.020,-2.000 C-0.019,-2.000 -0.088,-1.939 -0.116,-1.909 C-0.143,-1.879 -0.127,-1.848 -0.145,-1.818 C-0.162,-1.788 -0.209,-1.758 -0.222,-1.727 C-0.236,-1.697 -0.210,-1.667 -0.223,-1.636 C-0.237,-1.606 -0.291,-1.576 -0.303,-1.545 C-0.314,-1.515 -0.279,-1.485 -0.291,-1.455 C-0.303,-1.424 -0.368,-1.394 -0.377,-1.364 C-0.386,-1.333 -0.336,-1.303 -0.344,-1.273 C-0.353,-1.242 -0.427,-1.212 -0.430,-1.182 C-0.433,-1.152 -0.361,-1.121 -0.364,-1.091 C-0.367,-1.061 -0.444,-1.030 -0.449,-1.000 C-0.454,-0.970 -0.390,-0.939 -0.393,-0.909 C-0.396,-0.879 -0.465,-0.848 -0.465,-0.818 C-0.466,-0.788 -0.398,-0.758 -0.398,-0.727 C-0.397,-0.697 -0.463,-0.667 -0.461,-0.636 C-0.460,-0.606 -0.394,-0.576 -0.388,-0.545 C-0.383,-0.515 -0.438,-0.485 -0.430,-0.455 C-0.422,-0.424 -0.354,-0.394 -0.342,-0.364 C-0.330,-0.333 -0.370,-0.303 -0.357,-0.273 C-0.344,-0.242 -0.283,-0.212 -0.262,-0.182 C-0.241,-0.152 -0.267,-0.121 -0.231,-0.091 C-0.196,-0.061 -0.097,-0.015 -0.050,-0.000 C-0.003,0.015 0.003,0.015 0.050,-0.000 Z M-0.028,0 L0.028,0 L0.038,0.44 L-0.038,0.44 Z"/><path d="M0,-0.04 L0,-1.94 M0,-0.103 L0.314,-0.270 M0,-0.103 L-0.314,-0.270 M0,-0.285 L0.378,-0.450 M0,-0.285 L-0.378,-0.450 M0,-0.466 L0.406,-0.630 M0,-0.466 L-0.406,-0.630 M0,-0.648 L0.409,-0.810 M0,-0.648 L-0.409,-0.810 M0,-0.830 L0.395,-0.990 M0,-0.830 L-0.395,-0.990 M0,-1.012 L0.378,-1.170 M0,-1.012 L-0.378,-1.170 M0,-1.194 L0.332,-1.350 M0,-1.194 L-0.332,-1.350 M0,-1.375 L0.266,-1.530 M0,-1.375 L-0.266,-1.530 M0,-1.557 L0.196,-1.710 M0,-1.557 L-0.196,-1.710" fill="none" stroke="#12301c" stroke-opacity="0.55" stroke-width="0.02" stroke-linecap="round"/></g></defs><rect width="600" height="600" fill="url(#leaf-bg)"/><rect width="600" height="600" fill="url(#leaf-glow)"/><use href="#oak-leaf" transform="translate(175,480) rotate(-28) scale(118)" fill="#3b6b46" fill-opacity="0.8"/><use href="#oak-leaf" transform="translate(440,300) rotate(34) scale(150)" fill="#47784e" fill-opacity="0.75"/><use href="#oak-leaf" transform="translate(545,640) rotate(-68) scale(100)" fill="#2c5236" fill-opacity="1"/><use href="#oak-leaf" transform="translate(70,170) rotate(142) scale(90)" fill="#356040" fill-opacity="0.7"/><use href="#oak-leaf" transform="translate(320,70) rotate(-118) scale(78)" fill="#2c5236" fill-opacity="0.9"/><use href="#oak-leaf" transform="translate(620,110) rotate(205) scale(105)" fill="#264a30" fill-opacity="1"/><use href="#oak-leaf" transform="translate(250,660) rotate(168) scale(70)" fill="#356040" fill-opacity="0.6"/></svg></div>
     </div>
   </section>
 
   <section class="block" style="padding-top:0">
-    <div class="wrap offline">
+    <div class="wrap narrow">
       <h2>Works with no connection at all.</h2>
       <p class="muted">Nothing is reported anywhere, and what the app keeps, it keeps on your phone. Nothing waits on the network, and no feature switches off when there is no signal. The two exceptions are stated plainly, and only ever happen from behind your code:</p>
       <ul class="checks">
