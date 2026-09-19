@@ -98,6 +98,15 @@
   .note {
     border-left: 3px solid #7fae8a; padding-left: 1rem; color: var(--muted);
   }
+  .important {
+    background: var(--paper); border: 1px solid var(--rule); border-left: 4px solid #b5832f;
+    border-radius: 10px; padding: .9rem 1.1rem; margin: 1.2rem 0;
+  }
+  .important .label {
+    display: block; font-weight: 600; color: #8a5f1c; font-size: .82rem;
+    letter-spacing: .06em; text-transform: uppercase; margin-bottom: .3rem;
+  }
+  .important p { margin: 0; }
 </style>
 </head>
 <body>
@@ -137,6 +146,14 @@
   <p class="note">The file lists only the apps anyone can already see on your phone. Apps you have
   hidden are never written to it and can never be placed by it, because a text file sitting in your
   Downloads that lists what you hid is exactly the thing this app exists to not create.</p>
+
+  <div class="important">
+    <span class="label">Worth knowing before you share a file</span>
+    <p>An exported file lists <em>every</em> app you can see on your phone, not only the ones on
+    your home screen. Sending it to a friend, or posting it anywhere, shows them all of those apps.
+    Going the other way is safe: a layout someone else shared only ever moves your own icons, and
+    any app of theirs you do not have is simply left out, with the rest staying where they put it.</p>
+  </div>
 
   <h2>The three steps</h2>
   <ol>
