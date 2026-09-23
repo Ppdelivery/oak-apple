@@ -205,7 +205,7 @@ Give me back ONLY the layout, as one block I can save as a .md file. You do not
 need to repeat the explanation or the app list. Start it like this:
 
     # Home screen layout
-    version: 1
+    version: 2
     sort: custom
 
 and then the sections you have changed:
@@ -222,9 +222,12 @@ and then the sections you have changed:
   Add "#RRGGBB" after a folder's name to colour its tile.
 - A folder is only its apps. If you cannot see what is inside one (a closed folder
   in a screenshot), do not write it with empty bullets: ask me, or leave it out.
-- "## Drawer" — one continuous list, twenty to a page. A folder in the drawer takes
-  its apps out of the loose list; a folder on a home page does not, because the
-  drawer is the complete list of everything on the phone.
+- "## Drawer" is the first drawer page; add "## Drawer 2", "## Drawer 3" and so on for
+  more, twenty to a page. Each page keeps its own apps — a page you leave part full stays
+  part full and the next page starts on the next page, so put a new heading where you want
+  a new page rather than spacing things out. Within a page the drawer closes its own gaps.
+  A folder in the drawer takes its apps out of the loose list; a folder on a home page does
+  not, because the drawer is the complete list of everything on the phone.
 
 A surface you do not write about is left exactly as it is. So if I only ask you to
 fix my dock, only give me "## Dock".
